@@ -1,3 +1,4 @@
+import json
 from rest_framework import status, viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -27,7 +28,7 @@ class ScheduleInterviewListAPI(APIView):
         if serializer.is_valid():
             serializer.save()
             schedule_id = serializer.data.get('id')
-            tasks.scheduled_interview_email.delay(schedule_id, "")
+            # tasks.scheduled_interview_email.delay(schedule_id, "")
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -48,30 +49,27 @@ class ScheduleInterviewDetailAPI(APIView):
         serializer = ScheduleInterviewSerializer(snippet, data=request.data)
         if serializer.is_valid():
             serializer.save()
-            tasks.scheduled_interview_email.delay(pk, "Update")
+            # tasks.scheduled_interview_email.delay(pk, "Update")
             return Response(serializer.data, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
         snippet = self.get_object(pk=pk)
-        serializer = ScheduleInterviewSerializer(snippet)
-        obj = serializer.data
-        receivers = obj.get('participants')
+        # emails = snippet.participants.values('email')
+        # email_list = []
 
-        receivers_list = []
-        for participant in receivers:
-            receivers_list.append({"{name}": "{email}".format(
-                name=participant.name, email=participant.email)})
+        # for email in emails:
+        #     email_list.append(email.get('email'))
 
-        details = {
-            "receivers": receivers_list,
-            "interview_date": obj.get('interview_date'),
-            "start_time": obj.get('start_time'),
-            "end_time": obj.get('end_time'),
-            "subject": obj.get('subject'),
-        }
+        # details = {
+        #     "receivers": email_list,
+        #     "interview_date": snippet.interview_date,
+        #     "start_time": snippet.start_time,
+        #     "end_time": snippet.end_time,
+        #     "subject": snippet.subject,
+        # }
 
-        tasks.cancelled_interview_email.delay(details, "Cancelled")
+        # tasks.cancelled_interview_email.delay(details, "Cancelled")
         snippet.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
