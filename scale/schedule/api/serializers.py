@@ -16,7 +16,7 @@ class ScheduleInterviewSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ScheduleInterviewModel
-        fields = ('subject', 'description', 'interview_date', 'start_time',
+        fields = ('id', 'subject', 'description', 'interview_date', 'start_time',
                   'end_time', 'participants', 'status', 'created_at', 'updated_at')
 
     def create(self, validated_data):
