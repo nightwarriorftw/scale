@@ -1,8 +1,8 @@
-import datetime
+import datetime, json
 
 from django.conf import settings
 from django.template import Context
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage, get_connection
 from django.contrib.auth.models import User
 from django.template.loader import get_template
 
@@ -36,17 +36,17 @@ def scheduled_interview_email(schedule_id, status):
 @task(name='schedule.tasks.cancelled_interview_email')
 def cancelled_interview_email(obj, status):
     html_template = get_template('cancelled_interview.html')
-    receivers = obj.get('receivers_list')
+    receivers = obj.get('receivers')
 
-    for participant in receivers:
-        content_to_template = {'receiver_name': participant.get('name'),
-                               'interview_date': obj.get('interview_date'), 'start_time': obj.get('start_time'), 'end_time': obj.get('end_time')}
-        html_content = html_template.render(content_to_template)
-        email_subject = status + " " + obj.get('subject')
-        send_email = EmailMessage(
-            email_subject, html_content, settings.EMAIL_HOST_USER, [participant.get('receiver_email')])
-        send_email.content_subtype = "html"
-        send_email.send()
+    content_to_template = {'receiver_name': 'Candidate',
+                            'interview_date': obj['interview_date'], 'start_time': obj.get('start_time'), 'end_time': obj.get('end_time')}
+    html_content = html_template.render(content_to_template)
+    email_subject = status + " " + obj.get('subject')
+    send_email = EmailMessage(
+        email_subject, html_content, settings.EMAIL_HOST_USER, receivers)
+    send_email.content_subtype = "html"
+    send_email.send()
+
 
 
 @periodic_task(run_every=(crontab(minute='*/15')),
