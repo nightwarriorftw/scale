@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Custom
+    'schedule',
 
     # Third party
     'corsheaders',
