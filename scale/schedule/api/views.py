@@ -6,7 +6,7 @@ from rest_framework.parsers import FileUploadParser, MultiPartParser, FormParser
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 
-# from schedule import tasks
+from schedule import tasks
 from schedule.models import ScheduleInterviewModel
 from .serializers import ScheduleInterviewSerializer
 
@@ -20,11 +20,10 @@ class ScheduleInterviewListAPI(APIView):
         serializer = ScheduleInterviewSerializer(snippet, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    def post(self, request, format='png'):
-        print(request.data)
+    def post(self, request, format=None):
         participants = request.data.get('participants')
         serializer = ScheduleInterviewSerializer(
-            data=request.data, files=request.FILES)
+            data=request.data)
         if serializer.is_valid():
             serializer.save()
             schedule_id = serializer.data.get('id')

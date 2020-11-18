@@ -25,7 +25,7 @@ class ScheduleInterviewSerializer(serializers.ModelSerializer):
         # if number of participants is less than 2, then return validation error
         if(len(participants) < 2):
             raise serializers.ValidationError(
-                'Number of participants should not be less than 2')
+                'Atleast 2 participants required')
 
         # create new participants from given list of participants
         participants_list = []
