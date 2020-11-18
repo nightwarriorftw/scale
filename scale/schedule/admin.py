@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import ScheduleInterviewModel, ParticipantsModel
 
-# Register your models here.
+admin.site.register(ScheduleInterviewModel)
+admin.site.register(ParticipantsModel)

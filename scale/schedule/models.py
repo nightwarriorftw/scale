@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models import Q
-
+from django.core.exceptions import ValidationError
+from django.db.models.signals import m2m_changed
 
 class ParticipantsModel(models.Model):
     name = models.CharField(max_length=250)
@@ -38,3 +39,9 @@ class ScheduleInterviewModel(models.Model):
 
     def __str__(self):
         return self.subject
+
+def participants_count(sender, **kwargs):
+    if(kwargs['instance'].participants.count() < 2):
+        raise ValidationError('Atleast 2 participants should be allowed')
+
+m2m_changed.connect(participants_count, sender=ScheduleInterviewModel)
