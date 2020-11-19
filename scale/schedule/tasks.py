@@ -51,7 +51,7 @@ def cancelled_interview_email(obj, status):
 
 
 def send_reminder_email_utils(subject, interview_date, start_time, end_time, emails):
-    html_template = get_template('cancelled_interview.html')
+    html_template = get_template('reminder_email.html')
     content_to_template = {'interview_date': interview_date,
                            'start_time': start_time, 'end_time': end_time}
     html_content = html_template.render(content_to_template)
