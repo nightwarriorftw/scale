@@ -8,6 +8,7 @@ cred.sh
 media/
 static/
 *.sqlite3
+celerybeat-schedule
 
 
 # dependencies

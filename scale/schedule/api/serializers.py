@@ -84,9 +84,9 @@ class ScheduleInterviewSerializer(serializers.ModelSerializer):
             interview_date, start_time, end_time, participants_id)
 
         # If interview is already scheduled during this time slot, throw error
-        if queryset.exists():
-            raise serializers.ValidationError(
-                'Some participants have a meeting already scheduled during this time slot')
+        # if queryset.exists():
+        #     raise serializers.ValidationError(
+        #         'Some participants have a meeting already scheduled during this time slot')
 
         obj.subject = validated_data.get('subject')
         obj.description = validated_data.get('description')
