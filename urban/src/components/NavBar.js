@@ -28,7 +28,7 @@ const Navbar = () => {
               <Link to='/host'><span class='nav-link'>Host</span></Link>
             </li>
             <li class="nav-item">
-              <Link to='/events'><span class='nav-link'>Scheduled Interviews</span></Link>
+              <Link to='/interviews'><span class='nav-link'>Scheduled Interviews</span></Link>
             </li>
           </ul>
         </div>
