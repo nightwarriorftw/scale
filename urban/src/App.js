@@ -5,6 +5,7 @@ import Navbar from "./components/NavBar";
 import Home from './components/Home';
 import HostInterview from './components/Host';
 import ScheduledInterviews from './components/ScheduledInterviews';
+import InterviewDetails from './components/InterviewDetails';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/host" component={HostInterview} />
         <Route exact path="/interviews" component={ScheduledInterviews} />
-        {/* <Route exact path="/interviews/:id" component={InterviewDetails} /> */}
+        <Route exact path="/interviews/:id" component={InterviewDetails} />
       </Switch>
     </BrowserRouter>
   );
