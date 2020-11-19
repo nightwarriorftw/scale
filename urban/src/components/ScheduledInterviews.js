@@ -4,7 +4,6 @@ import axios from "axios";
 
 const ScheduledInterviews = () => {
   const [events, setEvents] = useState([]);
-  const [change, setChange] = useState({ render: true });
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/schedule/")

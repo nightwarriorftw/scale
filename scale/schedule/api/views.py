@@ -22,7 +22,6 @@ class ScheduleInterviewListAPI(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, format=None):
-        print(request.data)
         participants = request.data.get('participants')
         serializer = ScheduleInterviewSerializer(
             data=request.data)

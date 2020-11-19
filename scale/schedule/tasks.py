@@ -72,7 +72,7 @@ def send_reminder_email():
     """
     IST = pytz.timezone('Asia/Katmandu')
     reminder_time = (datetime.datetime.now(IST) +
-                     datetime.timedelta(minutes=31)).strftime('%H:%M:%S')
+                     datetime.timedelta(minutes=15)).strftime('%H:%M:%S')
 
     logger.info(reminder_time)
 
