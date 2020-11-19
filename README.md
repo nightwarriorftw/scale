@@ -1,4 +1,4 @@
-# scale
+# scale - interview scheduler
 
 
 ## Backend
