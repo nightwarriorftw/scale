@@ -58,8 +58,10 @@ const HostInterview = () => {
   };
 
   return (
-    <div className="App">
-      <form onSubmit={handleSubmit} class="form-class">
+    <div className="App" style={{ textAlign: "center" }}>
+      <h1>Host Interviews</h1>
+
+      <form onSubmit={handleSubmit} class="formClass">
         <input
           type="text"
           name="subject"
@@ -126,7 +128,7 @@ const HostInterview = () => {
           value={secondParticipantName}
           placeholder="Participant2 Name"
           onChange={(e) => setSecondParticipantName(e.target.value)}
-          required
+
         />
         <input
           type="email"
@@ -134,7 +136,7 @@ const HostInterview = () => {
           value={secondParticipantEmail}
           placeholder="Participant2 email"
           onChange={(e) => setSecondParticipantEmail(e.target.value)}
-          required
+          
         />
         <br />
 
