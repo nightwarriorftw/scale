@@ -37,7 +37,7 @@ const ScheduledInterviews = () => {
             <th>Interview Date</th>
             <th>Start Time</th>
             <th>End time</th>
-            <th>Participant</th>
+            <th>Participants</th>
           </tr>
         </thead>
 
