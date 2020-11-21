@@ -58,15 +58,7 @@ pip install -r requirements.txt
 cd scale/scale
 ```
 
-#### 3. Makemigrations, migrate and run the server
-
-```
-python manage.py makemigrations
-python manage.py migrate
-python manage.oy runserver
-```
-
-#### 4. Install RabbitMQ
+#### 3. Install RabbitMQ
 
 ```
 sudo apt-get install rabbitmq-server`
@@ -88,7 +80,15 @@ Add celery configuration in settings.py
     CELERY_IMPORTS = ('api.tasks',)
 ```
 
-#### 4. Celery and Cronjob
+#### 4. Makemigrations, migrate and run the server
+
+```
+python manage.py makemigrations
+python manage.py migrate
+python manage.oy runserver
+```
+
+#### 5. Celery and Cronjob
 
 Open another 2 terminals and run the following command respectivley in both of them
 
@@ -99,13 +99,13 @@ celery -A scale beat -l info
 
 - frontend
 
-#### Move to the urban folder and install requirements
+#### 6. Move to the urban folder and install requirements
 
 ```
 npm install
 ```
 
-#### Run the server
+#### 7. Run the server
 
 ```
 npm start
