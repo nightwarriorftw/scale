@@ -22,11 +22,14 @@ A WebApp built using **React** and **Django**, where admins can create interview
 
 ## :zap: Usage
 
-- An interview creation page where the admin can create an interview by selecting participants, start time, and end time. Backend should throw an error with a proper error message if:
-  - Any of the participants is not available during the scheduled time (i.e, has another interview scheduled)
+- An interview creation page where the admin can create an interview by selecting participants, start time, and end time. 
+Backend throws an error with a proper error message if:
+  - Any of the participants is not available during the scheduled time (i.e, has another interview scheduled) [Conflict Management] 
   - No of participants is less than 2
 - An interview list page where admin can see all the upcoming interviews.
 - An interview edit page where admin can edit the created interview with the same validations as on the creation pag
+- Invitation email is send when an interview is scheduled or whenever interview schedule is updated.
+- An email reminder 30 mins before the scheduled event
 
 ## :wrench: Development
 
@@ -108,7 +111,13 @@ npm start
 
 ## :camera: Gallery
 
-Pictures of project.
+![FrontPage](./public/front_page.png)
+<!-- Host Interview GIF-->
+<!-- Conflict Mangement GIF -->
+<!-- Scheduled Event -->
+<!-- Cancel Event -->
+<!-- Edit Event -->
+<!-- Celery -->
 
 ## :star2: Credit/Acknowledgment
 

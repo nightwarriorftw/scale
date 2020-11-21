@@ -80,7 +80,7 @@ const ScheduledInterviews = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            height: "100vh",
+            height: "50vh",
           }}
         >
           <Loader type="Puff" color="#00BFFF" height={100} width={100} />
