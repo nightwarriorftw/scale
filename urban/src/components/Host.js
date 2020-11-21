@@ -26,6 +26,7 @@ const HostInterview = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     let obj1 = {},
       obj2 = {};
     obj1["name"] = firstParticipantName;
@@ -46,7 +47,7 @@ const HostInterview = () => {
       end_time: endTime,
       participants: participantsList,
     };
-    console.log(newData);
+
     axios
       .post("http://localhost:8000/api/schedule/", newData, {
         headers: { "content-type": "application/json" },
@@ -62,7 +63,6 @@ const HostInterview = () => {
         }
       });
 
-    console.log(subject, description, interviewDate, startTime, endTime);
     reset();
   };
 
@@ -71,6 +71,7 @@ const HostInterview = () => {
       <h1>Host Interviews</h1>
 
       <form onSubmit={handleSubmit}>
+
         <div className="form-group">
           <label htmlFor="subject">Subject</label>
           <input
@@ -108,6 +109,7 @@ const HostInterview = () => {
             onChange={(e) => setInterviewDate(e.target.value)}
           />
         </div>
+
         <div className="form-group row">
           <div className="col-md-6">
             <label htmlFor="startTime">Start Time</label>
@@ -120,6 +122,7 @@ const HostInterview = () => {
               required
             />
           </div>
+
           <div className="col-md-6">
             <label htmlFor="endTime">End Time</label>
             <input
@@ -146,6 +149,7 @@ const HostInterview = () => {
               required
             />
           </div>
+
           <div className="col-md-6">
             <label htmlFor="endTime">Participant 1 Email</label>
             <input
@@ -173,6 +177,7 @@ const HostInterview = () => {
               required
             />
           </div>
+
           <div className="col-md-6">
             <label htmlFor="secondParticpantEmail">Participant 1 Email</label>
             <input
@@ -185,6 +190,7 @@ const HostInterview = () => {
               required
             />
           </div>
+
         </div>
         <button type="submit" className="btn btn-success">
           Host

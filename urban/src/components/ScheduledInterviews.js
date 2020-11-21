@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Loader from "react-loader-spinner";
-import { NotificationManager } from "react-notifications";
 import { toast } from "react-toastify";
 
 const ScheduledInterviews = () => {
@@ -26,7 +25,7 @@ const ScheduledInterviews = () => {
       .then((res) => {
         // console.log(res.data);
         setEvents(newEvents);
-       toast.success("Interview Cancelled") 
+        toast.success("Interview Cancelled");
       })
       .catch((err) => {
         toast.error("Error occoured. Please try again");
