@@ -26,7 +26,7 @@ const ScheduledInterviews = () => {
       .then((res) => {
         // console.log(res.data);
         setEvents(newEvents);
-       toast.success("Interview Cancelled") 
+        toast.success("Interview Cancelled");
       })
       .catch((err) => {
         toast.error("Error occoured. Please try again");
