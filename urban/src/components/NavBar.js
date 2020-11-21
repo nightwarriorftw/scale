@@ -4,12 +4,10 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <Link to="/">
-          Scale
-        </Link>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <Link to="/">Scale</Link>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#navbarNav"
@@ -17,18 +15,24 @@ const Navbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <Link to='/'><span class='nav-link'>Home</span></Link>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item active">
+              <Link to="/">
+                <span className="nav-link">Home</span>
+              </Link>
             </li>
-            <li class="nav-item">
-              <Link to='/host'><span class='nav-link'>Host</span></Link>
+            <li className="nav-item">
+              <Link to="/host">
+                <span className="nav-link">Host</span>
+              </Link>
             </li>
-            <li class="nav-item">
-              <Link to='/interviews'><span class='nav-link'>Scheduled Interviews</span></Link>
+            <li className="nav-item">
+              <Link to="/interviews">
+                <span className="nav-link">Scheduled Interviews</span>
+              </Link>
             </li>
           </ul>
         </div>

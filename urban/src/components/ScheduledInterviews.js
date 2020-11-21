@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Loader from "react-loader-spinner";
 
 const ScheduledInterviews = () => {
   const [events, setEvents] = useState([]);
@@ -29,20 +30,19 @@ const ScheduledInterviews = () => {
 
   return (
     <div>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Subject</th>
-            <th>Interview Date</th>
-            <th>Start Time</th>
-            <th>End time</th>
-            <th>Participants</th>
-          </tr>
-        </thead>
-
-        {events.length > 0 ? (
-          events.map((event) => (
+      {events.length > 0 ? (
+        <table className="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Subject</th>
+              <th>Interview Date</th>
+              <th>Start Time</th>
+              <th>End time</th>
+              <th>Participants</th>
+            </tr>
+          </thead>
+          {events.map((event) => (
             <tr>
               <th key={event.id}>{event.id}</th>
               <td>{event.subject}</td>
@@ -50,9 +50,7 @@ const ScheduledInterviews = () => {
               <td>{event.start_time}</td>
               <td>{event.end_time}</td>
               <td>
-                {event.participants.map((q) => (
-                   `${q.name} - ${q.email} `
-                ))}
+                {event.participants.map((q) => `${q.name} - ${q.email} `)}
               </td>
               <td>
                 <Link to={`/interviews/${event.id}`}>
@@ -70,11 +68,18 @@ const ScheduledInterviews = () => {
                 </button>
               </td>
             </tr>
-          ))
-        ) : (
-          <p>"Loading"</p>
-        )}
-      </table>
+          ))}
+        </table>
+      ) : (
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
+          <Loader
+            type="Puff"
+            color="#00BFFF"
+            height={100}
+            width={100}
+          />
+        </div>
+      )}
     </div>
   );
 };

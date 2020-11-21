@@ -28,7 +28,7 @@ class ScheduleInterviewListAPI(APIView):
         if serializer.is_valid():
             serializer.save()
             schedule_id = serializer.data.get('id')
-            tasks.scheduled_interview_email.delay(schedule_id, "")
+            # tasks.scheduled_interview_email.delay(schedule_id, "")
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         print(serializer.error_messages)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -49,7 +49,7 @@ class ScheduleInterviewDetailAPI(APIView):
         serializer = ScheduleInterviewSerializer(snippet, data=request.data)
         if serializer.is_valid():
             serializer.save()
-            tasks.scheduled_interview_email.delay(pk, "Update")
+            # tasks.scheduled_interview_email.delay(pk, "Update")
             return Response(serializer.data, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
