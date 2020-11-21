@@ -18,13 +18,13 @@
 
 ## :beginner: About
 
-A WebApp built using **React** and **Django**, where admins can create interviews by selecting participants, interview start time and end time.
+A WebApp built using **React**, **Django** and **Celery**,  where admins can create interviews by selecting participants, interview start time and end time.
 
 ## :zap: Usage
 
-- An interview creation page where the admin can create an interview by selecting participants, start time, and end time. 
-Backend throws an error with a proper error message if:
-  - Any of the participants is not available during the scheduled time (i.e, has another interview scheduled) [Conflict Management] 
+- An interview creation page where the admin can create an interview by selecting participants, start time, and end time.
+  Backend throws an error with a proper error message if:
+  - Any of the participants is not available during the scheduled time (i.e, has another interview scheduled) [Conflict Management]
   - No of participants is less than 2
 - An interview list page where admin can see all the upcoming interviews.
 - An interview edit page where admin can edit the created interview with the same validations as on the creation pag
@@ -110,18 +110,25 @@ npm start
 ```
 
 ## :camera: Gallery
-- Front Page
-![FrontPage](./public/front_page.png)
 
-- Host Event 
-![Host Event](./public/host_event.gif)
+- Front Page
+  ![FrontPage](./public/front_page.png)
+
+- Host Event
+  ![Host Event](./public/host_event.gif)
 
 - Same timing interview scheduling with same person [conflict management]
-![Conflict](./public/conflict.gif)
+  ![Conflict](./public/conflict.gif)
 
 - Cancel Event
-![Cancel Event](./public/cancel_interview.gif)
+  ![Cancel Event](./public/cancel_interview.gif)
 
+- Reminder Email
+
+  ![Reminder Email](./public/reminder_email.png)
+
+- Celery Reminder email send logs
+  ![logs](./public/reminder_logs.png)
 
 <!-- Host Interview GIF-->
 <!-- Conflict Mangement GIF -->

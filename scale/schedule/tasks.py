@@ -71,14 +71,21 @@ def send_reminder_email():
     Send reminder email for scheduled interview
     """
     IST = pytz.timezone('Asia/Katmandu')
-    reminder_time = (datetime.datetime.now(IST) +
+    reminder_start_time = (datetime.datetime.now(IST) +
                      datetime.timedelta(minutes=15)).strftime('%H:%M:%S')
 
-    logger.info(reminder_time)
+    reminder_end_time = (datetime.datetime.now(IST) +
+                     datetime.timedelta(minutes=16)).strftime('%H:%M:%S')
+
+    current_date = datetime.datetime.now(IST).strftime('%Y-%m-%d')
+
+    logger.info(reminder_start_time)
+    logger.info(reminder_end_time)
+    logger.info(current_date)
 
     queryset = ScheduleInterviewModel.objects.filter(
-        interview_date=datetime.date.today(), start_time=reminder_time)
-
+        interview_date=current_date, start_time__gte=reminder_start_time, start_time__lte=reminder_end_time)
+    
     if queryset.exists():
         for obj in queryset:
             email_list = []
