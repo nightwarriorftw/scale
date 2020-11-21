@@ -139,8 +139,7 @@ npm start
 
 ## :star2: Credit/Acknowledgment
 
-Credits goes to me and other contributors
-
+Credits goes to me 
 ## :lock: License
 
 [LICENSE](/LICENSE)
