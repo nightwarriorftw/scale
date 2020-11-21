@@ -7,7 +7,7 @@ class ParticipantsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ParticipantsModel
-        fields = ('name', 'email')
+        fields = ('id', 'name', 'email')
 
 
 class ScheduleInterviewSerializer(serializers.ModelSerializer):
