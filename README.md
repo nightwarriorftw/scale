@@ -18,7 +18,7 @@
 
 ## :beginner: About
 
-A WebApp built using **React** and **Django**, where admins can create interviews by selecting participants, interview start time and end time.
+A WebApp built using **React**, **Django** and **Celery**,  where admins can create interviews by selecting participants, interview start time and end time.
 
 ## :zap: Usage
 
@@ -124,6 +124,7 @@ npm start
   ![Cancel Event](./public/cancel_interview.gif)
 
 - Reminder Email
+
   ![Reminder Email](./public/reminder_email.png)
 
 - Celery Reminder email send logs
