@@ -83,7 +83,7 @@ Add celery configuration in settings.py
 ```
 python manage.py makemigrations
 python manage.py migrate
-python manage.oy runserver
+python manage.py runserver
 ```
 
 #### 5. Celery and Cronjob
@@ -110,8 +110,19 @@ npm start
 ```
 
 ## :camera: Gallery
-
+- Front Page
 ![FrontPage](./public/front_page.png)
+
+- Host Event 
+![Host Event](./public/host_event.gif)
+
+- Same timing interview scheduling with same person [conflict management]
+![Conflict](./public/conflict.gif)
+
+- Cancel Event
+![Cancel Event](./public/cancel_interview.gif)
+
+
 <!-- Host Interview GIF-->
 <!-- Conflict Mangement GIF -->
 <!-- Scheduled Event -->
