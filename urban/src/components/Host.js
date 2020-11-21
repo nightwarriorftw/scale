@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { NotificationManager } from "react-notifications";
 import { toast } from "react-toastify";
 
 const HostInterview = () => {
