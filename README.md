@@ -1,8 +1,8 @@
 <p align="center">
-<img src="./urban/public/scale.png">
+<img src="./urban/public/scale.png" width="50px" height="50px">
 </p>
 
-[![Open Issues](https://img.shields.io/github/issues/nightwarriorftw/scale?style=for-the-badge&logo=github)](https://github.com/nightwarriorftw/scale/issues) [![Forks](https://img.shields.io/github/forks/nightwarriorftw/scale?style=for-the-badge&logo=github)](https://github.com/nightwarriorftw/scale/network/members) [![Stars](https://img.shields.io/github/stars/nightwarriorftw/scale?style=for-the-badge&logo=reverbnation)](https://github.com/nightwarriorftw/scale/stargazers) ![Maintained](https://img.shields.io/maintenance/yes/2019?style=for-the-badge&logo=github)[![ForTheBadge uses-js](http://ForTheBadge.com/images/badges/uses-js.svg)](http://ForTheBadge.com)![Made with Python](https://img.shields.io/badge/Made%20with-Python-blueviolet?style=for-the-badge&logo=python) ![Open Source Love](https://img.shields.io/badge/Open%20Source-%E2%99%A5-red?style=for-the-badge&logo=open-source-initiative) ![Built with Love](https://img.shields.io/badge/Built%20With-%E2%99%A5-critical?style=for-the-badge&logo=ko-fi) [![Follow Me](https://img.shields.io/twitter/follow/nightwarriorftw?color=blue&label=Follow%20%40nightwarriorftw&logo=twitter&style=for-the-badge)](https://twitter.com/intent/follow?screen_name=nightwarriorftw) [![Telegram](https://img.shields.io/badge/Telegram-Chat-informational?style=for-the-badge&logo=telegram)](https://telegram.me/nightwarriorftw)
+[![Open Issues](https://img.shields.io/github/issues/nightwarriorftw/scale?style=for-the-badge&logo=github)](https://github.com/nightwarriorftw/scale/issues) [![Forks](https://img.shields.io/github/forks/nightwarriorftw/scale?style=for-the-badge&logo=github)](https://github.com/nightwarriorftw/scale/network/members) [![Stars](https://img.shields.io/github/stars/nightwarriorftw/scale?style=for-the-badge&logo=reverbnation)](https://github.com/nightwarriorftw/scale/stargazers) ![Maintained](https://img.shields.io/maintenance/yes/2020?style=for-the-badge&logo=github)![Made with Python](https://img.shields.io/badge/Made%20with-Python-blueviolet?style=for-the-badge&logo=python) [![ForTheBadge uses-js](http://ForTheBadge.com/images/badges/uses-js.svg)](http://ForTheBadge.com) ![Open Source Love](https://img.shields.io/badge/Open%20Source-%E2%99%A5-red?style=for-the-badge&logo=open-source-initiative) ![Built with Love](https://img.shields.io/badge/Built%20With-%E2%99%A5-critical?style=for-the-badge&logo=ko-fi) [![Follow Me](https://img.shields.io/twitter/follow/nightwarriorftw?color=blue&label=Follow%20%40nightwarriorftw&logo=twitter&style=for-the-badge)](https://twitter.com/intent/follow?screen_name=nightwarriorftw) [![Telegram](https://img.shields.io/badge/Telegram-Chat-informational?style=for-the-badge&logo=telegram)](https://telegram.me/nightwarriorftw)
 
 ## :ledger: Index
 
@@ -41,7 +41,7 @@ Knowledge of React and Django
 
 ### :nut_and_bolt: Development Environment
 
-- Backend 
+- Backend
 
 #### 1. Make a virtual environment
 
