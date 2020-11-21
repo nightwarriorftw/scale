@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Loader from "react-loader-spinner";
+import { NotificationManager } from "react-notifications";
+import { toast } from "react-toastify";
 
 const ScheduledInterviews = () => {
   const [events, setEvents] = useState([]);
@@ -22,10 +24,13 @@ const ScheduledInterviews = () => {
     axios
       .delete(`http://localhost:8000/api/schedule/${id}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setEvents(newEvents);
+       toast.success("Interview Cancelled") 
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        toast.error("Error occoured. Please try again");
+      });
   };
 
   return (
@@ -71,13 +76,15 @@ const ScheduledInterviews = () => {
           ))}
         </table>
       ) : (
-        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
-          <Loader
-            type="Puff"
-            color="#00BFFF"
-            height={100}
-            width={100}
-          />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+          }}
+        >
+          <Loader type="Puff" color="#00BFFF" height={100} width={100} />
         </div>
       )}
     </div>

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { NotificationManager } from "react-notifications";
+import { toast } from "react-toastify";
 
 const HostInterview = () => {
   const [subject, setSubject] = useState("");
@@ -50,8 +52,16 @@ const HostInterview = () => {
       .post("http://localhost:8000/api/schedule/", newData, {
         headers: { "content-type": "application/json" },
       })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        toast.success("Interview Scheduled");
+      })
+      .catch((err) => {
+        if (err.response.data[0]) {
+          toast.error(err.response.data[0]);
+        } else {
+          toast.error("Error occoured. Please try again");
+        }
+      });
 
     console.log(subject, description, interviewDate, startTime, endTime);
     reset();

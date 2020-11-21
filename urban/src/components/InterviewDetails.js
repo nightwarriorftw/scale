@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const InterviewDetails = () => {
   const [description, setDescription] = useState("");
@@ -18,13 +19,11 @@ const InterviewDetails = () => {
     axios
       .get(`http://localhost:8000/api/schedule/${id}`)
       .then((res) => {
-        console.log(res.data);
         setSubject(res.data.subject);
         setDescription(res.data.description);
         setInterviewDate(res.data.interview_date);
         setStartTime(res.data.start_time);
         setEndTime(res.data.end_time);
-        // setParticipant(res.data.participant);
         setFirstParticipantName(res.data.participants[0].name);
         setFirstParticipantEmail(res.data.participants[0].email);
         setSecondParticipantName(res.data.participants[1].name);
@@ -64,10 +63,14 @@ const InterviewDetails = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        toast.success("Details updated");
       })
       .catch((err) => {
-        console.log(err);
+        if(err.response.data[0]){
+          toast.error(err.response.data[0]);
+        } else {
+          toast.error("Some error has occoured. Please try again");
+        }
       });
   };
 
@@ -75,7 +78,7 @@ const InterviewDetails = () => {
     <div className="container">
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label for="subject">Subject</label>
+          <label htmlFor="subject">Subject</label>
           <input
             type="text"
             name="subject"
@@ -89,7 +92,7 @@ const InterviewDetails = () => {
         </div>
 
         <div className="form-group">
-          <label for="description">Description</label>
+          <label htmlFor="description">Description</label>
           <input
             type="text"
             name="description"
@@ -102,7 +105,7 @@ const InterviewDetails = () => {
         </div>
 
         <div className="form-group">
-          <label for="interviewDate">Interview Date</label>
+          <label htmlFor="interviewDate">Interview Date</label>
           <input
             type="date"
             name="interviewDate"
@@ -114,7 +117,7 @@ const InterviewDetails = () => {
         </div>
         <div className="form-group row">
           <div className="col-md-6">
-            <label for="startTime">Start Time</label>
+            <label htmlFor="startTime">Start Time</label>
             <input
               type="time"
               name="startTime"
@@ -126,7 +129,7 @@ const InterviewDetails = () => {
             />
           </div>
           <div className="col-md-6">
-            <label for="endTime">End Time</label>
+            <label htmlFor="endTime">End Time</label>
             <input
               type="time"
               name="endTime"
@@ -141,7 +144,7 @@ const InterviewDetails = () => {
 
         <div className="form-group row">
           <div className="col-md-6">
-            <label for="endTime">Participant 1 Name</label>
+            <label htmlFor="endTime">Participant 1 Name</label>
             <input
               type="text"
               name="firstParticipantName"
@@ -153,7 +156,7 @@ const InterviewDetails = () => {
             />
           </div>
           <div className="col-md-6">
-            <label for="endTime">Participant 1 Email</label>
+            <label htmlFor="endTime">Participant 1 Email</label>
             <input
               type="email"
               name="firstParticipantEmail"
@@ -168,7 +171,7 @@ const InterviewDetails = () => {
 
         <div className="form-group row">
           <div className="col-md-6">
-            <label for="secondParticipantName">Participant 2 Name</label>
+            <label htmlFor="secondParticipantName">Participant 2 Name</label>
             <input
               type="text"
               name="secondParticipantName"
@@ -180,7 +183,7 @@ const InterviewDetails = () => {
             />
           </div>
           <div className="col-md-6">
-            <label for="secondParticpantEmail">Participant 1 Email</label>
+            <label htmlFor="secondParticpantEmail">Participant 1 Email</label>
             <input
               type="email"
               name="secondParticipantEmail"

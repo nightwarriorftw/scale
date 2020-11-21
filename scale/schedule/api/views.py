@@ -72,4 +72,4 @@ class ScheduleInterviewDetailAPI(APIView):
 
         # tasks.cancelled_interview_email.delay(details, "Cancelled")
         snippet.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response("Interview cancelled", status=status.HTTP_204_NO_CONTENT)

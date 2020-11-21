@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <Link to="/">Scale</Link>
+        <Link to="/"> <img src={process.env.PUBLIC_URL + "/scale.png"}  width="50px" heigh="50px" alt="logo"/></Link>
         <button
           className="navbar-toggler"
           type="button"
