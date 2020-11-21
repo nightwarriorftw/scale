@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Loader from "react-loader-spinner";
-import { NotificationManager } from "react-notifications";
 import { toast } from "react-toastify";
 
 const ScheduledInterviews = () => {
