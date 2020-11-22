@@ -18,7 +18,7 @@
 
 ## :beginner: About
 
-A WebApp built using **React**, **Django** and **Celery**,  where admins can create interviews by selecting participants, interview start time and end time.
+A WebApp built using **React**, **Django**, **Celery** and **RabbitMQ**  where admins can create interviews by selecting participants, interview start time and end time.
 
 ## :zap: Usage
 

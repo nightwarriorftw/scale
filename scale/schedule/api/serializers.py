@@ -58,7 +58,8 @@ class ScheduleInterviewSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         obj = self.instance
         participants = validated_data.get('participants')
-
+        print(obj.id)
+        schedule_id = obj.id
         # If participants is less that 2, throw validation error
         if len(participants) < 2:
             raise serializers.ValidationError(
@@ -80,13 +81,13 @@ class ScheduleInterviewSerializer(serializers.ModelSerializer):
         start_time = validated_data.get('start_time')
         end_time = validated_data.get('end_time')
 
-        # queryset = ScheduleInterviewModel.objects.get_availability(
-        #     interview_date, start_time, end_time, participants_id)
+        queryset = ScheduleInterviewModel.objects.get_availability_modified(schedule_id,
+            interview_date, start_time, end_time, participants_id)
 
-        # # If interview is already scheduled during this time slot, throw error
-        # if queryset.exists():
-        #     raise serializers.ValidationError(
-        #         'Some participants have a meeting already scheduled during this time slot')
+        # If interview is already scheduled during this time slot, throw error
+        if queryset.exists():
+            raise serializers.ValidationError(
+                'Some participants have a meeting already scheduled during this time slot')
 
         obj.subject = validated_data.get('subject')
         obj.description = validated_data.get('description')
