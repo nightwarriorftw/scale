@@ -13,6 +13,9 @@ class ParticipantsModel(models.Model):
 
 
 class ScheduleManager(models.Manager):
+    """
+        Custom model manager for getting availability for the participants
+    """
 
     def get_availability(self, interview_date, start_time, end_time, participants):
         queryset = ScheduleInterviewModel.objects.filter(Q(interview_date=interview_date) &
@@ -35,6 +38,9 @@ class ScheduleManager(models.Manager):
 
 
 class ScheduleInterviewModel(models.Model):
+    """
+        Schedule Interview Model
+    """
     subject = models.CharField(max_length=100)
     description = models.TextField(max_length=200)
     interview_date = models.DateField()

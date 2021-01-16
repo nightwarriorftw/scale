@@ -18,6 +18,9 @@ logger = get_task_logger(__name__)
 
 @task(name='schedule.tasks.scheduled_interview_email')
 def scheduled_interview_email(schedule_id, status):
+    """
+        Send invitation email on creation and updation of the scheduled email
+    """
     obj = ScheduleInterviewModel.objects.get(pk=schedule_id)
     html_template = get_template('schedule_interview.html')
     receivers = obj.participants.all()
@@ -37,6 +40,9 @@ def scheduled_interview_email(schedule_id, status):
 
 @task(name='schedule.tasks.cancelled_interview_email')
 def cancelled_interview_email(obj, status):
+    """
+        Send email for cancelled interview
+    """
     html_template = get_template('cancelled_interview.html')
     receivers = obj.get('receivers')
 
@@ -51,6 +57,9 @@ def cancelled_interview_email(obj, status):
 
 
 def send_reminder_email_utils(subject, interview_date, start_time, end_time, emails):
+    """
+        Sends email to the user
+    """
     html_template = get_template('reminder_email.html')
     content_to_template = {'interview_date': interview_date,
                            'start_time': start_time, 'end_time': end_time}
@@ -72,10 +81,10 @@ def send_reminder_email():
     """
     IST = pytz.timezone('Asia/Katmandu')
     reminder_start_time = (datetime.datetime.now(IST) +
-                     datetime.timedelta(minutes=15)).strftime('%H:%M:%S')
+                           datetime.timedelta(minutes=15)).strftime('%H:%M:%S')
 
     reminder_end_time = (datetime.datetime.now(IST) +
-                     datetime.timedelta(minutes=16)).strftime('%H:%M:%S')
+                         datetime.timedelta(minutes=16)).strftime('%H:%M:%S')
 
     current_date = datetime.datetime.now(IST).strftime('%Y-%m-%d')
 
@@ -85,14 +94,13 @@ def send_reminder_email():
 
     queryset = ScheduleInterviewModel.objects.filter(
         interview_date=current_date, start_time__gte=reminder_start_time, start_time__lte=reminder_end_time)
-    
+
     if queryset.exists():
         for obj in queryset:
             email_list = []
             email_queryset = obj.participants.all().values('email')
             for emails in email_queryset:
                 email_list.append(emails['email'])
-            print(email_list)
 
             # Send emails
             send_reminder_email_utils(

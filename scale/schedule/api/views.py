@@ -28,7 +28,7 @@ class ScheduleInterviewListAPI(APIView):
         if serializer.is_valid():
             serializer.save()
             schedule_id = serializer.data.get('id')
-            # tasks.scheduled_interview_email.delay(schedule_id, "")
+            tasks.scheduled_interview_email.delay(schedule_id, "")
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         print(serializer.error_messages)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -49,26 +49,26 @@ class ScheduleInterviewDetailAPI(APIView):
         serializer = ScheduleInterviewSerializer(snippet, data=request.data)
         if serializer.is_valid():
             serializer.save()
-            # tasks.scheduled_interview_email.delay(pk, "Update")
+            tasks.scheduled_interview_email.delay(pk, "Update")
             return Response(serializer.data, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
         snippet = self.get_object(pk=pk)
-        # emails = snippet.participants.values('email')
-        # email_list = []
+        emails = snippet.participants.values('email')
+        email_list = []
 
-        # for email in emails:
-        #     email_list.append(email.get('email'))
+        for email in emails:
+            email_list.append(email.get('email'))
 
-        # details = {
-        #     "receivers": email_list,
-        #     "interview_date": snippet.interview_date,
-        #     "start_time": snippet.start_time,
-        #     "end_time": snippet.end_time,
-        #     "subject": snippet.subject,
-        # }
+        details = {
+            "receivers": email_list,
+            "interview_date": snippet.interview_date,
+            "start_time": snippet.start_time,
+            "end_time": snippet.end_time,
+            "subject": snippet.subject,
+        }
 
         # tasks.cancelled_interview_email.delay(details, "Cancelled")
         snippet.delete()
