@@ -60,6 +60,7 @@ class ScheduleInterviewSerializer(serializers.ModelSerializer):
         participants = validated_data.get('participants')
         print(obj.id)
         schedule_id = obj.id
+        
         # If participants is less that 2, throw validation error
         if len(participants) < 2:
             raise serializers.ValidationError(

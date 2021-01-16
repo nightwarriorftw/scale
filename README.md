@@ -133,14 +133,13 @@ npm start
 - Celery Reminder email send logs
   ![logs](./public/reminder_logs.png)
 
-<!-- Host Interview GIF-->
-<!-- Conflict Mangement GIF -->
-<!-- Scheduled Event -->
-<!-- Cancel Event -->
-<!-- Edit Event -->
-<!-- Celery -->
 
 ## :star2: Credit/Acknowledgment
+[Aman Verma](https://nightwarriorftw.netlify.app)
+  - Github: [nightwarriorftw](https://github.com/nightwarriorftw)
+  - Linkedin: [developer-aman-verma](https://linkedin.com/in/developer-aman-verma)
+  - Twitter: [nightwarriorftw](https://twitter.com/nightwarriorftw)
+
 
 Credits goes to me 
 ## :lock: License
