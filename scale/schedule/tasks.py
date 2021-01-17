@@ -1,17 +1,16 @@
 import datetime
-import pytz
 
+import pytz
+from celery.decorators import periodic_task, task
+from celery.task.schedules import crontab
+from celery.utils.log import get_task_logger
 from django.conf import settings
-from django.template import Context
-from django.core.mail import EmailMessage, get_connection
 from django.contrib.auth.models import User
+from django.core.mail import EmailMessage, get_connection
+from django.template import Context
 from django.template.loader import get_template
 
 from schedule.models import ScheduleInterviewModel
-
-from celery.task.schedules import crontab
-from celery.utils.log import get_task_logger
-from celery.decorators import periodic_task, task
 
 logger = get_task_logger(__name__)
 
