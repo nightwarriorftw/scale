@@ -10,6 +10,9 @@ static/
 *.sqlite3
 celerybeat-schedule
 
+# testing
+htmlcov/
+.coverage
 
 # dependencies
 node_modules/

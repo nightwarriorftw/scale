@@ -1,6 +1,5 @@
 from rest_framework import serializers
-
-from schedule.models import ScheduleInterviewModel, ParticipantsModel
+from schedule.models import ParticipantsModel, ScheduleInterviewModel
 
 
 class ParticipantsSerializer(serializers.ModelSerializer):
