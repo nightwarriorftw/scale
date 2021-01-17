@@ -30,7 +30,7 @@ A software built using **React**, **Django**, **Celery** and **RabbitMQ**  where
   - Any of the participants is not available during the scheduled time (i.e, has another interview scheduled) [Conflict Management]
   - No of participants is less than 2
 - An interview list page where admin can see all the upcoming interviews.
-- An interview edit page where admin can edit the created interview with the same validations as on the creation pag
+- An interview edit page where admin can edit the created interview with the same validations as on the creation page.
 - Invitation email is send when an interview is scheduled or whenever interview schedule is updated. (Celery is used to send email asynchronously)
 - An email reminder 30 mins before the scheduled event (Again celery is used to send reminder email asynchronously)
 
