@@ -78,7 +78,7 @@ def send_reminder_email():
     """
     Send reminder email for scheduled interview
     """
-    IST = pytz.timezone('Asia/Katmandu')
+    IST = pytz.timezone('Asia/Kolkata')
     reminder_start_time = (datetime.datetime.now(IST) +
                            datetime.timedelta(minutes=15)).strftime('%H:%M:%S')
 

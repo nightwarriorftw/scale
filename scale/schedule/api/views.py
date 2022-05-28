@@ -1,11 +1,8 @@
-import json
-
-from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
-from rest_framework import status, viewsets
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from schedule import tasks
+from schedule.tasks import scheduled_interview_email
 from schedule.models import ScheduleInterviewModel
 
 from .serializers import ScheduleInterviewSerializer
@@ -21,16 +18,12 @@ class ScheduleInterviewListAPI(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, format=None):
-        participants = request.data.get('participants')
-        serializer = ScheduleInterviewSerializer(
-            data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            schedule_id = serializer.data.get('id')
-            tasks.scheduled_interview_email.delay(schedule_id, "")
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        print(serializer.error_messages)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        serializer = ScheduleInterviewSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        schedule_id = serializer.data.get('id')
+        scheduled_interview_email.delay(schedule_id, "")
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 class ScheduleInterviewDetailAPI(APIView):
@@ -48,7 +41,7 @@ class ScheduleInterviewDetailAPI(APIView):
         serializer = ScheduleInterviewSerializer(snippet, data=request.data)
         if serializer.is_valid():
             serializer.save()
-            tasks.scheduled_interview_email.delay(pk, "Update")
+            scheduled_interview_email.delay(pk, "Update")
             return Response(serializer.data, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

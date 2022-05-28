@@ -143,11 +143,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Celery setting
 
 djcelery.setup_loader()
-BROKER_URL = 'amqp://paradox:paradox@123@127.0.0.1:5672//'
+BROKER_URL = 'amqp://paradoxboy:paradoxboy@123@127.0.0.1:5672//'
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'Asia/Katmandu'
+CELERY_TIMEZONE = 'Asia/Kolkata'
 CELERY_IMPORTS = ('schedule.tasks',)
 
 
