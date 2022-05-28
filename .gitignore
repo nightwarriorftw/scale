@@ -9,6 +9,7 @@ media/
 static/
 *.sqlite3
 celerybeat-schedule
+.venv/
 
 # testing
 htmlcov/
